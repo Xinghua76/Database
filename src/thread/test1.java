@@ -1,5 +1,5 @@
 package thread;
 
 public class test1 {
-    sadfashfskalfhk
+    private static int a = 520;
 }
