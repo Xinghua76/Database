@@ -14,6 +14,11 @@ public class day_04_25_MergeSort_1 {
         return nums;
     }
 
+
+    public static int MAXN = 50001;
+
+	public static int[] help = new int[MAXN];
+    
     public static int[] mergeSort2(int[] nums){
         
     }
