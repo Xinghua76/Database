@@ -1,6 +1,4 @@
 package dataStructure;
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 
 //二分查找，有序数组是否存在一个数字
