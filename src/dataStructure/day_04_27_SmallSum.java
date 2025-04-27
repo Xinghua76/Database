@@ -6,6 +6,11 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.io.StreamTokenizer;
 
+// 小和问题
+// 测试链接 : https://www.nowcoder.com/practice/edfe05a1d45c4ea89101d936cac32469
+// 请同学们务必参考如下代码中关于输入、输出的处理
+// 这是输入输出处理效率很高的写法
+// 提交以下的code，提交时请把类名改成"Main"，可以直接通过
 public class day_04_27_SmallSum {
     public static int MAX = 100001;
     public static int[] arr = new int[MAX];
