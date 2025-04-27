@@ -21,8 +21,8 @@ public class day_04_26_QuickSort {
     public static void main (String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StreamTokenizer in = new StreamTokenizer(br);
-        in.nextToken();
         PrintWriter out = new PrintWriter(new OutputStreamWriter(System.out));
+        in.nextToken();
         n = (int)in.nval;
         for (int i = 0; i < n; i++){
             in.nextToken();
