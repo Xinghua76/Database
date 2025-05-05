@@ -1,17 +1,16 @@
 package thread;
-
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-public class test {
-
-    public static void runTasksInBatches( List<Runnable> tasks, List<List<Integer>> batches) throws Exception{
+public class day_05_02_TaskRunner {
+    
+    public static void runTasksInBatches(List<Runnable> tasks, List<List<Integer>> batches) throws Exception{
         ExecutorService executor = Executors.newFixedThreadPool(10);
         
         List<Future<Void>> futures = new ArrayList<>();
-        Set<Integer> currentTaskIndices = new HashSet<>();
+        Set<Integer> executedTaskIndices = new HashSet<>();
 
         for (int batchIndex  = 0; batchIndex  < batches.size(); batchIndex++){
             
@@ -20,7 +19,7 @@ public class test {
             for (int taskIndex : currentBatch){
                  Future<Void> future = (Future<Void>) executor.submit(tasks.get(taskIndex));
                  futures.add(future);
-                 currentTaskIndices.add(taskIndex);
+                 executedTaskIndices.add(taskIndex);
             }
 
             for (Future<Void> f : futures){
@@ -31,24 +30,20 @@ public class test {
             System.out.println("第"+ batchIndex+ "批任务执行完成");
         }
 
-        // for (int i = 0; i < tasks.size(); i++){
-        //     while (!currentTaskIndices.contains(i)) {
-        //         executor.submit(tasks.get(i));
-        //     }
-        // }
-
         for (int i = 0; i < tasks.size(); i++){
-            if (!currentTaskIndices.contains(i)) {
+            if (!executedTaskIndices.contains(i)) {
                 executor.submit(tasks.get(i));
             }
         }
 
+
         executor.shutdown();
 
         while (!executor.isTerminated()) {
-            
         }
+        
     }
+
 
     public static void main(String[] args) {
         List<Runnable> tsaks = creatTasks();
@@ -79,4 +74,5 @@ public class test {
         return tasks;
     }
 
+    
 }
