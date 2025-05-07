@@ -1,0 +1,52 @@
+package dataStructure.month_25_05;
+
+// 将数组和减半的最少操作次数
+// 测试链接 : https://leetcode.cn/problems/minimum-operations-to-halve-array-sum/
+public class day_05_02_MinimumOperationsToHalveArraySum {
+    public static int MAXN = 100001;
+    public static long[] heap = new long[MAXN];
+    public static int size;
+    public static int halveArray(int[] num){
+        size = num.length;
+        long sum = 0;
+        for (int i = size - 1; i >= 0; i-- ){
+            heap[i] = (long)num[i] << 20 ;
+            sum += heap[i];
+            heapify(i);
+        }
+
+        sum /= 2;
+
+        int ans = 0;
+        long cur = 0;
+        while (cur < sum) {
+            heap[0] /= 2;
+            cur += heap[0];
+            heapify(0);
+            ans++;
+        }
+
+        return ans;
+
+    }
+
+    public static void heapify(int i){
+        int l = 2 * i + 1;
+        while (l < size) {
+            int best = l + 1 < size && heap[l + 1] > heap[l] ? l + 1 : l;
+            best = heap[best] > heap[i] ? best : i;
+            if (i == best) {
+                break;
+            }
+            swap(i,best);
+            i = best;
+            l = i * 2 + 1;
+        }
+    }
+
+    public static void swap(int i, int j) {
+		long tmp = heap[i];
+		heap[i] = heap[j];
+		heap[j] = tmp;
+	}
+}
