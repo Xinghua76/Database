@@ -35,7 +35,6 @@ public class day_05_10_ReverseNodesInkGroup {
         while (--k > 0 && s != null) {
             s = s.next;
         }
-
         return s;   
     }
 
